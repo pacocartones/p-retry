@@ -201,7 +201,9 @@ Randomizes the timeouts by multiplying with a factor between 1 and 2.
 Type: `number`\
 Default: `Infinity`
 
-The maximum time (in milliseconds) that the retried operation is allowed to run.
+The maximum time (in milliseconds) available for retrying, including time spent on attempts and retry delays.
+
+This limits retries, not the duration of an individual attempt. It does not interrupt a pending `input` call; a successful attempt can still resolve after the limit. To time out an attempt, configure a timeout or cancellation in `input` itself.
 
 Measured with a monotonic clock (`performance.now()`) so system clock adjustments do not affect the limit.
 

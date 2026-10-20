@@ -175,7 +175,9 @@ export type Options = {
 	readonly randomize?: boolean;
 
 	/**
-	The maximum time (in milliseconds) that the retried operation is allowed to run.
+	The maximum time (in milliseconds) available for retrying, including time spent on attempts and retry delays.
+
+	This limits retries, not the duration of an individual attempt. It does not interrupt a pending `input` call; a successful attempt can still resolve after the limit. To time out an attempt, configure a timeout or cancellation in `input` itself.
 
 	@default Infinity
 
